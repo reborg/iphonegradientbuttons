@@ -10,12 +10,13 @@
 
 
 @implementation AbstractGradientButton
-- (CGGradientRef)createNormalGradient
+@synthesize normalGradient, highlightGradient;
+- (CGGradientRef)normalGradient
 {
     [NSException raise:@"Abstract class used" format:@"You must subclass and override normalGradient and highlightGradient"];
     return NULL;
 }
-- (CGGradientRef)createHighlightGradient
+- (CGGradientRef)highlightGradient
 {
     [NSException raise:@"Abstract class used" format:@"You must subclass and override normalGradient and highlightGradient"];
     return NULL;
@@ -134,9 +135,9 @@
 	CGPathAddLineToPoint(path, NULL, point.x, point.y);
 	CGPathCloseSubpath(path);
     if (self.state == UIControlStateHighlighted)
-        gradient = [self createHighlightGradient];
+        gradient = self.highlightGradient;
     else
-        gradient = [self createNormalGradient];
+        gradient = self.normalGradient;
     
 	CGContextAddPath(context, path);
 	CGContextSaveGState(context);
@@ -145,7 +146,6 @@
 	point2 = CGPointMake((self.bounds.size.width / 2.0), 0.0);
 	CGContextDrawLinearGradient(context, gradient, point, point2, (kCGGradientDrawsBeforeStartLocation | kCGGradientDrawsAfterEndLocation));
 	CGContextRestoreGState(context);
-	CGGradientRelease(gradient);
 	color = [UIColor colorWithRed:0.076 green:0.103 blue:0.195 alpha:1.0];
 	[color setStroke];
 	CGContextSetLineWidth(context, stroke);
@@ -175,5 +175,13 @@
 {
     [super touchesEnded:touches withEvent:event];
     [self setNeedsDisplay];
+}
+- (void)dealloc 
+{
+    if (normalGradient != NULL)
+        CGGradientRelease(normalGradient);
+    if (highlightGradient != NULL)
+        CGGradientRelease(highlightGradient);
+    [super dealloc];
 }
 @end

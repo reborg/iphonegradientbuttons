@@ -12,9 +12,11 @@
 
 @interface AbstractGradientButton : UIButton 
 {
-
+@protected
+    CGGradientRef   normalGradient;
+    CGGradientRef   highlightGradient;
 }
-- (CGGradientRef)createNormalGradient;
-- (CGGradientRef)createHighlightGradient;
+@property (nonatomic, readonly) CGGradientRef normalGradient;
+@property (nonatomic, readonly) CGGradientRef highlightGradient;
 - (CGFloat)cornerRadius;
 @end
