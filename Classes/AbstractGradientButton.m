@@ -8,6 +8,9 @@
 
 #import "AbstractGradientButton.h"
 
+@interface AbstractGradientButton()
+- (void)hesitateUpdate; // Used to catch and fix problem where quick taps don't get updated back to normal state
+@end
 
 @implementation AbstractGradientButton
 @synthesize normalGradient, highlightGradient;
@@ -156,6 +159,10 @@
     
 	CGColorSpaceRelease(space);
 }
+- (void)hesitateUpdate
+{
+    [self setNeedsDisplay];
+}
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesBegan:touches withEvent:event];
@@ -165,16 +172,19 @@
 {
     [super touchesCancelled:touches withEvent:event];
     [self setNeedsDisplay];
+    [self performSelector:@selector(hesitateUpdate) withObject:nil afterDelay:0.1];
 }
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesMoved:touches withEvent:event];
     [self setNeedsDisplay];
+    
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesEnded:touches withEvent:event];
     [self setNeedsDisplay];
+    [self performSelector:@selector(hesitateUpdate) withObject:nil afterDelay:0.1];
 }
 - (void)dealloc 
 {
