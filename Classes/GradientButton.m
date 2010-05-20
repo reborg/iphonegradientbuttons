@@ -74,7 +74,8 @@
 #pragma mark Appearances
 - (void)useAlertStyle
 {
-
+    // Oddly enough, if I create the color array using arrayWithObjects:, it
+    // doesn't work - the gradient comes back NULL
     NSMutableArray *colors = [NSMutableArray arrayWithCapacity:3];
     UIColor *color = [UIColor colorWithRed:0.283 green:0.32 blue:0.414 alpha:1.0];
     [colors addObject:(id)[color CGColor]];
