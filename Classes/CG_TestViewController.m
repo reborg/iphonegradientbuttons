@@ -9,12 +9,33 @@
 #import "CG_TestViewController.h"
 
 @implementation CG_TestViewController
-//- (void)viewDidLoad
-//{
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Title" message:@"Message" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-//    [alert show];
-//    [alert release];
-//}
-
-
+@synthesize blackButton;
+@synthesize whiteButton;
+@synthesize alertButton;
+@synthesize orangeButton;
+@synthesize redButton;
+- (void)viewDidLoad
+{
+    [blackButton useBlackStyle];
+    [whiteButton useWhiteStyle];
+    [alertButton useAlertStyle];
+    [orangeButton useSimpleOrangeStyle];
+    [redButton useRedDeleteStyle];
+}
+- (void)viewDidUnload
+{
+    self.blackButton = nil;
+    self.whiteButton = nil;
+    self.alertButton = nil;
+    self.orangeButton = nil;
+    self.redButton = nil;
+}
+- (void)dealloc
+{
+    [blackButton release];
+    [whiteButton release];
+    [alertButton release];
+    [orangeButton release];
+    [redButton release];
+}
 @end

@@ -7,10 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GradientButton.h"
+@interface CG_TestViewController : UIViewController 
+{
 
-@interface CG_TestViewController : UIViewController {
-
+    GradientButton    *blackButton;
+    GradientButton    *whiteButton;
+    GradientButton    *alertButton;
+    GradientButton    *orangeButton;
+    GradientButton    *redButton;
 }
-
+@property (nonatomic, retain) IBOutlet  GradientButton *blackButton;
+@property (nonatomic, retain) IBOutlet  GradientButton *whiteButton;
+@property (nonatomic, retain) IBOutlet  GradientButton *alertButton;
+@property (nonatomic, retain) IBOutlet  GradientButton *orangeButton;
+@property (nonatomic, retain) IBOutlet  GradientButton *redButton;
 @end
 
