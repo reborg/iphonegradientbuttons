@@ -41,4 +41,5 @@
 - (void)useWhiteStyle;
 - (void)useBlackStyle;
 - (void)useSimpleOrangeStyle;
+- (void)useGreenConfirmStyle;
 @end
