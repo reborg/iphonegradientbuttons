@@ -15,6 +15,8 @@
 @synthesize orangeButton;
 @synthesize redButton;
 @synthesize greenButton;
+@synthesize blackActionButton;
+@synthesize whiteActionButton;
 - (void)viewDidLoad
 {
     [blackButton useBlackStyle];
@@ -23,6 +25,8 @@
     [orangeButton useSimpleOrangeStyle];
     [redButton useRedDeleteStyle];
     [greenButton useGreenConfirmStyle];
+    [whiteActionButton useWhiteActionSheetStyle];
+    [blackActionButton useBlackActionSheetStyle];
 }
 - (void)viewDidUnload
 {
@@ -32,6 +36,9 @@
     self.orangeButton = nil;
     self.redButton = nil;
     self.greenButton = nil;
+    self.whiteActionButton = nil;
+    self.blackActionButton = nil;
+    
 }
 - (void)dealloc
 {
@@ -41,6 +48,8 @@
     [orangeButton release];
     [redButton release];
     [greenButton release];
+    [whiteActionButton release];
+    [blackActionButton release];
     [super dealloc];
 }
 @end

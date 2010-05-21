@@ -17,6 +17,8 @@
     GradientButton    *orangeButton;
     GradientButton    *redButton;
     GradientButton    *greenButton;
+    GradientButton    *blackActionButton;
+    GradientButton    *whiteActionButton;
 }
 @property (nonatomic, retain) IBOutlet  GradientButton *blackButton;
 @property (nonatomic, retain) IBOutlet  GradientButton *whiteButton;
@@ -24,5 +26,7 @@
 @property (nonatomic, retain) IBOutlet  GradientButton *orangeButton;
 @property (nonatomic, retain) IBOutlet  GradientButton *redButton;
 @property (nonatomic, retain) IBOutlet  GradientButton *greenButton;
+@property (nonatomic, retain) IBOutlet  GradientButton *blackActionButton;
+@property (nonatomic, retain) IBOutlet  GradientButton *whiteActionButton;
 @end
 
